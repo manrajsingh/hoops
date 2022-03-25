@@ -1,0 +1,5 @@
+django
+mysqlclient
+jupyter
+ipython
+django-extensions

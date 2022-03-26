@@ -44,12 +44,13 @@ class Match(models.Model):
 class PlayerStats(models.Model):
     result_choices = (
         ('W', 'Won'),
-        ('L', 'Lost')
+        ('L', 'Lost'),
+        ('I', 'In Progress')
     )
     league = models.ForeignKey(League, on_delete=models.CASCADE, related_name='league')
     player = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='player')
     match = models.ForeignKey(Match, on_delete=models.CASCADE, related_name='match')
-    result = models.CharField(max_length=1, choices=result_choices)
+    result = models.CharField(max_length=1, choices=result_choices, default='I')
 
     def __str__(self):
         return f"{self.league__name} {self.wins}/{self.games_played}"

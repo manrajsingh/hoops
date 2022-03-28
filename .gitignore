@@ -59,6 +59,7 @@ coverage.xml
 *.log
 local_settings.py
 settings-*.py
+db.json
 db.sqlite3
 db.sqlite3-journal
 
@@ -132,3 +133,7 @@ dmypy.json
 
 # Logs
 logs/
+
+
+# vscode
+*.code-workspace

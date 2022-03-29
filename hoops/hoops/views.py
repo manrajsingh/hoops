@@ -84,3 +84,23 @@ def winning_streaks(request, slug):
             .order_by('-win_pct')
         )
     return render(request, 'dash_components/player-rankings.html', {'results': results})
+
+def top_teams(request, slug):
+    results = (PlayerStats.objects.filter(league__slug=slug)
+            .values('player__name')
+            .annotate(
+                wins=(Count('result', filter=Q(result='W'))),
+                losses=(Count('result', filter=Q(result='L'))),
+                total=(Count('result')),
+            )
+            .annotate(
+                win_pct = (
+                        Cast('wins', FloatField()) / (Cast('total', FloatField()))
+                    )
+            )
+            .order_by('-total')
+            .order_by('-win_pct')
+        )
+    for r in results:
+        print(f'{r}')
+    return render(request, 'dash_components/player-rankings.html', {'results': results})

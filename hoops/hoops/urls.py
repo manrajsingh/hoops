@@ -14,6 +14,6 @@ urlpatterns = [
     path('dashboard/<slug:slug>/match-results',views.match_results),
     path('dashboard/<slug:slug>/player-rankings',views.player_rankings),
     path('dashboard/<slug:slug>/winning-streaks',views.winning_streaks),
-    
+    path('dashboard/<slug:slug>/top-teams',views.top_teams),
     
 ]

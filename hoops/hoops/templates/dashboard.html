@@ -221,7 +221,7 @@
                                     <tr>
                                         <th
                                             class="sticky z-10 top-0 px-6 bg-slate-50 text-slate-500 align-middle border border-solid border-slate-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                            Date/Time
+                                            Date
                                         </th>
                                         <th
                                             class="sticky z-10 top-0 px-6 bg-slate-50 text-slate-500 align-middle border border-solid border-slate-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
@@ -275,7 +275,7 @@
                                         style="min-width: 140px"></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody hx-get="/dashboard/{{slug}}/top-teams" hx-trigger="load">
                                 <tr>
                                     <th
                                         class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">

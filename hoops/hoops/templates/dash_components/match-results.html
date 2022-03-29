@@ -1,0 +1,41 @@
+{% for r in results %}
+<tr class="align-baseline border-b border-slate-300 {% cycle 'bg-white' 'bg-neutral-50' %}">
+    <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+        {{r.played_on.date}} <br> Game {{r.row_number}}
+    </th>
+    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+        <div class="flex flex-row items-center">
+            <div class="mr-2">
+                {% if r.host_score > r.guest_score %}
+                W
+                {% else %}
+                L
+                {% endif %} <br />
+                {{ r.host_score }}
+            </div>
+            <div class="pl-2 border-l-2 border-slate-200"">
+                                {% for h in r.guest.all %}
+                                    {{h}}<br/>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </td>
+                    <td class=" border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                <div class="flex flex-row items-center">
+                    <div class="mr-2">
+                        {% if r.guest_score > r.host_score %}
+                        W
+                        {% else %}
+                        L
+                        {% endif %} <br />
+                        {{ r.guest_score }}
+                    </div>
+                    <div class="pl-2 border-l-2 border-slate-200">
+                        {% for h in r.guest.all %}
+                        {{h}}<br />
+                        {% endfor %}
+                    </div>
+                </div>
+    </td>
+</tr>
+{% endfor %}

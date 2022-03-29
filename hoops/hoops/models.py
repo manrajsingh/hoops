@@ -47,10 +47,18 @@ class PlayerStats(models.Model):
         ('L', 'Lost'),
         ('I', 'In Progress')
     )
+    played_as_choices = (
+        ('H','Host'),
+        ('G', 'Guest')
+    )
     league = models.ForeignKey(League, on_delete=models.CASCADE, related_name='league')
     player = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='player')
     match = models.ForeignKey(Match, on_delete=models.CASCADE, related_name='match')
+    played_as = models.CharField(max_length=1, choices=played_as_choices, default='U')
     result = models.CharField(max_length=1, choices=result_choices, default='I')
 
+    class Meta:
+        verbose_name_plural = 'Player Stats'
+
     def __str__(self):
-        return f"{self.league__name} {self.wins}/{self.games_played}"
+        return f"{self.league.name} {self.player.name} {self.match} {self.result}"

@@ -1,34 +1,24 @@
 {% extends '_base.html' %} {% block content %}
+
 <div class="relative bg-slate-100">
     <div class="relative bg-slate-600 md:pt-32 sm:pt-20 pb-32 pt-20">
         <div class="px-4 md:px-10 mx-auto w-full">
             <div>
                 <div class="flex flex-wrap">
                     <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
-                        <div
-                            class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg"
-                        >
+                        <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
                             <div class="flex-auto p-4">
                                 <div class="flex flex-wrap">
-                                    <div
-                                        class="relative w-full pr-4 max-w-full flex-grow flex-1"
-                                    >
-                                        <h5
-                                            class="text-slate-400 uppercase font-bold text-xs"
-                                        >
+                                    <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
+                                        <h5 class="text-slate-400 uppercase font-bold text-xs">
                                             Games Played
                                         </h5>
-                                        <span
-                                            class="font-semibold text-xl text-slate-700"
-                                            >7</span
-                                        >
+                                        <span class="font-semibold text-xl text-slate-700"
+                                            hx-get="/dashboard/{{slug}}/games-played" hx-trigger="load">_</span>
                                     </div>
-                                    <div
-                                        class="relative w-auto pl-4 flex-initial"
-                                    >
+                                    <div class="relative w-auto pl-4 flex-initial">
                                         <div
-                                            class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-red-500"
-                                        >
+                                            class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-red-500">
                                             <i class="far fa-chart-bar"></i>
                                         </div>
                                     </div>
@@ -37,63 +27,41 @@
                         </div>
                     </div>
                     <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
-                        <div
-                            class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg"
-                        >
+                        <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
                             <div class="flex-auto p-4">
                                 <div class="flex flex-wrap">
-                                    <div
-                                        class="relative w-full pr-4 max-w-full flex-grow flex-1"
-                                    >
-                                        <h5
-                                            class="text-slate-400 uppercase font-bold text-xs"
-                                        >
+                                    <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
+                                        <h5 class="text-slate-400 uppercase font-bold text-xs">
                                             Total Players
                                         </h5>
-                                        <span
-                                            class="font-semibold text-xl text-slate-700"
-                                            >13</span
-                                        >
+                                        <span class="font-semibold text-xl text-slate-700"
+                                            hx-get="/dashboard/{{slug}}/total-players" hx-trigger="load">_</span>
                                     </div>
-                                    <div
-                                        class="relative w-auto pl-4 flex-initial"
-                                    >
+                                    <div class="relative w-auto pl-4 flex-initial">
                                         <div
-                                            class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-orange-500"
-                                        >
+                                            class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-orange-500">
                                             <i class="fas fa-chart-pie"></i>
                                         </div>
                                     </div>
                                 </div>
-                                 
+
                             </div>
                         </div>
                     </div>
                     <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
-                        <div
-                            class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg"
-                        >
+                        <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
                             <div class="flex-auto p-4">
                                 <div class="flex flex-wrap">
-                                    <div
-                                        class="relative w-full pr-4 max-w-full flex-grow flex-1"
-                                    >
-                                        <h5
-                                            class="text-slate-400 uppercase font-bold text-xs"
-                                        >
+                                    <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
+                                        <h5 class="text-slate-400 uppercase font-bold text-xs">
                                             Total Rent
                                         </h5>
-                                        <span
-                                            class="font-semibold text-xl text-slate-700"
-                                            >$xx.00</span
-                                        >
+                                        <span class="font-semibold text-xl text-slate-700"
+                                            hx-get="/dashboard/{{slug}}/total-rent" hx-trigger="load">_</span>
                                     </div>
-                                    <div
-                                        class="relative w-auto pl-4 flex-initial"
-                                    >
+                                    <div class="relative w-auto pl-4 flex-initial">
                                         <div
-                                            class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-pink-500"
-                                        >
+                                            class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-pink-500">
                                             <i class="fas fa-dollar-sign"></i>
                                         </div>
                                     </div>
@@ -102,30 +70,20 @@
                         </div>
                     </div>
                     <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
-                        <div
-                            class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg"
-                        >
+                        <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
                             <div class="flex-auto p-4">
                                 <div class="flex flex-wrap">
-                                    <div
-                                        class="relative w-full pr-4 max-w-full flex-grow flex-1"
-                                    >
-                                        <h5
-                                            class="text-slate-400 uppercase font-bold text-xs"
-                                        >
-                                            Date
+                                    <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
+                                        <h5 class="text-slate-400 uppercase font-bold text-xs">
+                                            Avg Games / Day
                                         </h5>
-                                        <span
-                                            class="font-semibold text-xl text-slate-700"
-                                            ><input id="date" type="date" name="date" /></span
-                                        >
+                                        <span class="font-semibold text-xl text-slate-700"
+                                            hx-get="/dashboard/{{slug}}/avg-games-per-day" hx-trigger="load">_</span>
+
                                     </div>
-                                    <div
-                                        class="relative w-auto pl-4 flex-initial"
-                                    >
+                                    <div class="relative w-auto pl-4 flex-initial">
                                         <div
-                                            class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-sky-500"
-                                        >
+                                            class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-sky-500">
                                             <i class="fas fa-calendar"></i>
                                         </div>
                                     </div>
@@ -138,69 +96,79 @@
         </div>
     </div>
     <div class="px-4 md:px-10 mx-auto w-full -m-24">
-        <div class="flex flex-wrap">
+        <div class="flex flex-wrap overflow-hidden">
             <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-                <div
-                    class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-slate-800"
-                >
+                <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-slate-800">
                     <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
                         <div class="flex flex-wrap items-center">
-                            <div
-                                class="relative w-full max-w-full flex-grow flex-1"
-                            >
-                                <h6
-                                    class="uppercase text-slate-100 mb-1 text-xs font-semibold"
-                                >
+                            <div class="relative w-full max-w-full flex-grow flex-1">
+                                <h6 class="uppercase text-slate-100 mb-1 text-xs font-semibold">
                                     Rankings
                                 </h6>
                                 <h2 class="text-white text-xl font-semibold">
-                                   Overall 
+                                    Overall
                                 </h2>
                             </div>
                         </div>
                     </div>
                     <div class="p-4 flex-auto">
-                        <div class="relative" style="height: 350px">
-                            <div class="chartjs-size-monitor">
-                                <div class="chartjs-size-monitor-expand">
-                                    <div class=""></div>
-                                </div>
-                                <div class="chartjs-size-monitor-shrink">
-                                    <div class=""></div>
-                                </div>
+                        <div class="relative">
+                            <div
+                                class="overflow-auto scrollbar:!w-1.5 scrollbar:!h-1.5 scrollbar:bg-transparent scrollbar-track:!bg-slate-100 scrollbar-thumb:!rounded scrollbar-thumb:!bg-slate-300 scrollbar-track:!rounded dark:scrollbar-track:!bg-slate-500/[0.16] dark:scrollbar-thumb:!bg-slate-500/50 max-h-96 supports-scrollbars:pr-2 lg:max-h-96">
+                                <table class="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr>
+                                            <th
+                                                class="sticky z-10 top-0 text-sm leading-6 font-semibold text-slate-700 bg-white p-0 dark:bg-slate-900 dark:text-slate-300">
+                                                <div
+                                                    class="p-2 border-b border-slate-200 dark:border-slate-400/20">
+                                                    Rank # </div>
+                                            </th>
+                                            <th
+                                                class="sticky z-10 top-0 text-sm leading-6 font-semibold text-slate-700 bg-white p-0 dark:bg-slate-900 dark:text-slate-300">
+                                                <div
+                                                    class="p-2 border-b border-slate-200 dark:border-slate-400/20">
+                                                    Name</div>
+                                            </th>
+                                            <th
+                                                class="sticky z-10 top-0 text-sm leading-6 font-semibold text-slate-700 bg-white p-0 dark:bg-slate-900 dark:text-slate-300">
+                                                <div
+                                                    class="p-2 border-b border-slate-200 dark:border-slate-400/20">
+                                                    Wins</div>
+                                            </th>
+                                            <th
+                                                class="sticky z-10 top-0 text-sm leading-6 font-semibold text-slate-700 bg-white p-0 dark:bg-slate-900 dark:text-slate-300">
+                                                <div
+                                                    class="p-2 border-b border-slate-200 dark:border-slate-400/20">
+                                                    Losses</div>
+                                            </th>
+                                            <th
+                                                class="sticky z-10 top-0 text-sm leading-6 font-semibold text-slate-700 bg-white p-0 dark:bg-slate-900 dark:text-slate-300">
+                                                <div
+                                                    class="p-2 border-b border-slate-200 dark:border-slate-400/20">
+                                                    Win %</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="align-baseline" hx-get="/dashboard/{{slug}}/player-rankings" hx-trigger="load">
+                                         
+                                    </tbody>
+                                </table>
+                                <div class="sticky bottom-0 h-px -mt-px bg-slate-200 dark:bg-slate-400/20"></div>
                             </div>
-                            <canvas
-                                id="line-chart"
-                                style="
-                                    display: block;
-                                    width: 1082px;
-                                    height: 350px;
-                                "
-                                class="chartjs-render-monitor"
-                                width="1082"
-                                height="350"
-                            ></canvas>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="w-full xl:w-4/12 px-4">
-                <div
-                    class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded"
-                >
+                <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
                     <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
                         <div class="flex flex-wrap items-center">
-                            <div
-                                class="relative w-full max-w-full flex-grow flex-1"
-                            >
-                                <h6
-                                    class="uppercase text-slate-400 mb-1 text-xs font-semibold"
-                                >
+                            <div class="relative w-full max-w-full flex-grow flex-1">
+                                <h6 class="uppercase text-slate-400 mb-1 text-xs font-semibold">
                                     Leaderboard
                                 </h6>
-                                <h2
-                                    class="text-slate-700 text-xl font-semibold"
-                                >
+                                <h2 class="text-slate-700 text-xl font-semibold">
                                     Winning Streak
                                 </h2>
                             </div>
@@ -216,17 +184,11 @@
                                     <div class=""></div>
                                 </div>
                             </div>
-                            <canvas
-                                id="bar-chart"
-                                style="
+                            <canvas id="bar-chart" style="
                                     display: block;
                                     width: 509px;
                                     height: 350px;
-                                "
-                                class="chartjs-render-monitor"
-                                width="509"
-                                height="350"
-                            ></canvas>
+                                " class="chartjs-render-monitor" width="509" height="350"></canvas>
                         </div>
                     </div>
                 </div>
@@ -234,165 +196,104 @@
         </div>
         <div class="flex flex-wrap mt-4">
             <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-                <div
-                    class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded"
-                >
+                <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
                     <div class="rounded-t mb-0 px-4 py-3 border-0">
                         <div class="flex flex-wrap items-center">
-                            <div
-                                class="relative w-full px-4 max-w-full flex-grow flex-1"
-                            >
-                                <h3
-                                    class="font-semibold text-base text-slate-700"
-                                >
-                              	     Match Results
+                            <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                                <h3 class="font-semibold text-base text-slate-700">
+                                    Match Results
                                 </h3>
                             </div>
-                            <div
-                                class="relative w-full px-4 max-w-full flex-grow flex-1 text-right"
-                            >
-                                <button
+                            <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+                                <!-- <button
                                     class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                    type="button"
-                                >
+                                    type="button">
                                     See all
-                                </button>
+                                </button> -->
                             </div>
                         </div>
                     </div>
-                    <div class="block w-full overflow-x-auto">
-                        <table
-                            class="items-center w-full bg-transparent border-collapse"
-                        >
-                            <thead>
-                                <tr>
-                                    <th
-                                        class="px-6 bg-slate-50 text-slate-500 align-middle border border-solid border-slate-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
-                                    >
-                                        Date/Time
-                                    </th>
-                                    <th
-                                        class="px-6 bg-slate-50 text-slate-500 align-middle border border-solid border-slate-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
-                                    >
-                                        Host Team
-                                    </th>
-                                    <th
-                                        class="px-6 bg-slate-50 text-slate-500 align-middle border border-solid border-slate-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
-                                    >
-                                        Guest Team
-                                    </th>
-                                    <th
-                                        class="px-6 bg-slate-50 text-slate-500 align-middle border border-solid border-slate-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
-                                    >
-                                        Result
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th
-                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left"
-                                    >
-                                        Date - Tme
-                                    </th>
-                                    <td
-                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
-                                    >
-                                        List of Host Players
-                                    </td>
-                                    <td
-                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
-                                    >
-                                        List of Guest Players
-                                    </td>
-                                    <td
-                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
-                                    >
-                                        <i
-                                            class="fas fa-arrow-up text-emerald-500 mr-4"
-                                        ></i
-                                        > Winner (Host)
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="relative">
+                        <div 
+                            class="overflow-auto scrollbar:!w-1.5 scrollbar:!h-1.5 scrollbar:bg-transparent scrollbar-track:!bg-slate-100 scrollbar-thumb:!rounded scrollbar-thumb:!bg-slate-300 scrollbar-track:!rounded dark:scrollbar-track:!bg-slate-500/[0.16] dark:scrollbar-thumb:!bg-slate-500/50 max-h-96 supports-scrollbars:pr-2 lg:max-h-96">
+                            <table class="items-center w-full bg-transparent border-collapse">
+                                <thead>
+                                    <tr>
+                                        <th
+                                            class="sticky z-10 top-0 px-6 bg-slate-50 text-slate-500 align-middle border border-solid border-slate-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                            Date/Time
+                                        </th>
+                                        <th
+                                            class="sticky z-10 top-0 px-6 bg-slate-50 text-slate-500 align-middle border border-solid border-slate-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                            Host Team
+                                        </th>
+                                        <th
+                                            class="sticky z-10 top-0 px-6 bg-slate-50 text-slate-500 align-middle border border-solid border-slate-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                            Guest Team
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody hx-get="/dashboard/{{slug}}/match-results" hx-trigger="load">
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
+
             </div>
             <div class="w-full xl:w-4/12 px-4">
-                <div
-                    class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded"
-                >
+                <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
                     <div class="rounded-t mb-0 px-4 py-3 border-0">
                         <div class="flex flex-wrap items-center">
-                            <div
-                                class="relative w-full px-4 max-w-full flex-grow flex-1"
-                            >
-                                <h3
-                                    class="font-semibold text-base text-slate-700"
-                                >
+                            <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                                <h3 class="font-semibold text-base text-slate-700">
                                     Top Teams
                                 </h3>
                             </div>
-                            <div
-                                class="relative w-full px-4 max-w-full flex-grow flex-1 text-right"
-                            >
+                            <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
                                 <button
                                     class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                    type="button"
-                                >
+                                    type="button">
                                     See all
                                 </button>
                             </div>
                         </div>
                     </div>
-                    <div class="block w-full overflow-x-auto">
-                        <table
-                            class="items-center w-full bg-transparent border-collapse"
-                        >
+                    <div class="block w-full overflow-y-auto">
+                        <table class="items-center w-full bg-transparent border-collapse">
                             <thead class="thead-light">
                                 <tr>
                                     <th
-                                        class="px-6 bg-slate-50 text-slate-500 align-middle border border-solid border-slate-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
-                                    >
+                                        class="px-6 bg-slate-50 text-slate-500 align-middle border border-solid border-slate-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                                         Top Teams
                                     </th>
                                     <th
-                                        class="px-6 bg-slate-50 text-slate-500 align-middle border border-solid border-slate-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
-                                    >
+                                        class="px-6 bg-slate-50 text-slate-500 align-middle border border-solid border-slate-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                                         Win %
                                     </th>
-                                    <th
-                                        class="px-6 bg-slate-50 text-slate-500 align-middle border border-solid border-slate-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
-                                        style="min-width: 140px"
-                                    ></th>
+                                    <th class="px-6 bg-slate-50 text-slate-500 align-middle border border-solid border-slate-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                                        style="min-width: 140px"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <th
-                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left"
-                                    >
+                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
                                         List Players as teams
                                     </th>
                                     <td
-                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
-                                    >
+                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                         x %
                                     </td>
                                     <td
-                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
-                                    >
+                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                         <div class="flex items-center">
                                             <span class="mr-2">60%</span>
                                             <div class="relative w-full">
-                                                <div
-                                                    class="overflow-hidden h-2 text-xs flex rounded bg-red-200"
-                                                >
-                                                    <div
-                                                        style="width: 60%"
-                                                        class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
-                                                    ></div>
+                                                <div class="overflow-hidden h-2 text-xs flex rounded bg-red-200">
+                                                    <div style="width: 60%"
+                                                        class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

@@ -35,3 +35,18 @@ class MatchAdmin(admin.ModelAdmin):
     
     def guests(self, obj):
         return format_html(self.get_guest_result(obj) + " - " + f"<br/>{self.get_guest_result(obj)} - ".join([p.name for p in obj.guest.all()]))
+
+
+@admin.register(PlayerStats)
+class PlayerStatsAdmin(admin.ModelAdmin):
+    list_display = [field.name for field in PlayerStats._meta.get_fields()]
+    search_fields = ['player__name']
+
+    def has_add_permission(self, request, obj=None):
+        return False
+    
+    def has_change_permission(self,request,obj=None):
+        return True
+
+    def has_delete_permission(self, request, obj=None):
+        return False

@@ -58,11 +58,13 @@ def player_rankings(request, slug):
             )
             .annotate(
                 win_pct = (
-                        Cast('wins', FloatField()) / (Cast('total', FloatField()))
+                        (Cast('wins', FloatField()) / (Cast('total', FloatField())) * 100)
                     )
             )
-            .order_by('-total')
+            .order_by('player__name')
             .order_by('-win_pct')
+            .order_by('-total')
+  
         )
     return render(request, 'dash_components/player-rankings.html', {'results': results})
 
@@ -86,20 +88,11 @@ def winning_streaks(request, slug):
     return render(request, 'dash_components/player-rankings.html', {'results': results})
 
 def top_teams(request, slug):
-    results = (PlayerStats.objects.filter(league__slug=slug)
-            .values('player__name')
+    results = (
+            Match.objects.filter(league__slug=slug)
             .annotate(
                 wins=(Count('result', filter=Q(result='W'))),
-                losses=(Count('result', filter=Q(result='L'))),
-                total=(Count('result')),
             )
-            .annotate(
-                win_pct = (
-                        Cast('wins', FloatField()) / (Cast('total', FloatField()))
-                    )
-            )
-            .order_by('-total')
-            .order_by('-win_pct')
         )
     for r in results:
         print(f'{r}')

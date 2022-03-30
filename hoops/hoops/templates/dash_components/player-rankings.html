@@ -1,3 +1,4 @@
+ 
 {% for r in results %}
 <tr class="align-baseline border-b border-slate-700 text-slate-300 {% cycle 'bg-slate-800' 'bg-gray-800' %}">
     <td translate="no"
@@ -17,3 +18,7 @@
     </td>
 </tr>
 {% endfor %}
+<script type="text/javascript">
+    elm = document.getElementById('rankings');
+    elm.innerHTML += ' - Players that at least played {{total_matches}} games';
+</script>

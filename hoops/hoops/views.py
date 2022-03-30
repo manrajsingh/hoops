@@ -1,3 +1,4 @@
+from django.forms import IntegerField
 from django.shortcuts import render, HttpResponse
 from django.db.models import Count, Avg, Window, F, Q, FloatField
 from django.db.models.functions import RowNumber, Cast
@@ -49,42 +50,31 @@ def match_results(request,slug):
 
 
 def player_rankings(request, slug):
+    total_matches = round(Match.objects.count()/4)
     results = (PlayerStats.objects.filter(league__slug=slug)
             .values('player__name')
             .annotate(
                 wins=(Count('result', filter=Q(result='W'))),
                 losses=(Count('result', filter=Q(result='L'))),
-                total=(Count('result')),
+                total=(Count('result')), 
             )
+            .filter(total__gt=total_matches)
             .annotate(
                 win_pct = (
                         (Cast('wins', FloatField()) / (Cast('total', FloatField())) * 100)
                     )
             )
             .order_by('player__name')
-            .order_by('-win_pct')
             .order_by('-total')
+            .order_by('-win_pct')
   
         )
-    return render(request, 'dash_components/player-rankings.html', {'results': results})
+    print(total_matches)
+    return render(request, 'dash_components/player-rankings.html', {'results': results, 'total_matches': total_matches})
 
 
 def winning_streaks(request, slug):
-    results = (PlayerStats.objects.filter(league__slug=slug)
-            .values('player__name')
-            .annotate(
-                wins=(Count('result', filter=Q(result='W'))),
-                losses=(Count('result', filter=Q(result='L'))),
-                total=(Count('result')),
-            )
-            .annotate(
-                win_pct = (
-                        Cast('wins', FloatField()) / (Cast('total', FloatField()))
-                    )
-            )
-            .order_by('-total')
-            .order_by('-win_pct')
-        )
+    
     return render(request, 'dash_components/player-rankings.html', {'results': results})
 
 def top_teams(request, slug):

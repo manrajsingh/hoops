@@ -10,7 +10,19 @@
     </td>
     <td translate="no"
         class="p-2 text-xs leading-6 text-indigo-600 dark:text-slate-300">
-        {{ r.wins}} / {{ r.losses}} / {{ r.total}}
+        {{ r.wins}} / {{ r.losses}}
+    </td>
+    <td translate="no"
+        class="p-2 text-xs leading-6 text-indigo-600 dark:text-slate-300">
+        W{{r.wl_streak}} - L{{r.ll_streak}}
+    </td>
+    <td translate="no"
+        class="p-2 text-xs leading-6 text-indigo-600 dark:text-slate-300">
+        {% if r.w_streak > r.l_streak %}
+            W{{r.w_streak}}
+        {% else %}
+            L{{r.l_streak}}
+        {% endif %}
     </td>
     <td translate="no"
         class="p-2 text-xs leading-6 text-indigo-600 dark:text-slate-300">
@@ -20,5 +32,5 @@
 {% endfor %}
 <script type="text/javascript">
     elm = document.getElementById('rankings');
-    elm.innerHTML += ' - Players that at least played {{total_matches}} games';
+    elm.innerHTML += ' - Players that have at least played {{min_matches}} of {{total_matches}} games';
 </script>

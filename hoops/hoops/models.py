@@ -56,6 +56,8 @@ class PlayerStats(models.Model):
     match = models.ForeignKey(Match, on_delete=models.CASCADE, related_name='match')
     played_as = models.CharField(max_length=1, choices=played_as_choices, default='U')
     result = models.CharField(max_length=1, choices=result_choices, default='I')
+    w_streak = models.IntegerField(default=0)
+    l_streak = models.IntegerField(default=0)
 
     class Meta:
         verbose_name_plural = 'Player Stats'

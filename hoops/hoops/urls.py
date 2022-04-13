@@ -13,7 +13,7 @@ urlpatterns = [
     path('dashboard/<slug:slug>/avg-games-per-day',views.avg_games_per_day),
     path('dashboard/<slug:slug>/match-results',views.match_results),
     path('dashboard/<slug:slug>/player-rankings',views.player_rankings),
-    path('dashboard/<slug:slug>/winning-streaks',views.winning_streaks),
-    path('dashboard/<slug:slug>/top-teams',views.top_teams),
+    path('dashboard/<slug:slug>/most-games-played',views.most_games_played),
+    path('dashboard/<slug:slug>/rent-breakdown',views.rent_breakdown),
     
 ]

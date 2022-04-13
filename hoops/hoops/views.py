@@ -1,8 +1,9 @@
+import math
 from django.forms import IntegerField
 from django.shortcuts import render, HttpResponse
-from django.db.models import Count, Avg, Window, F, Q, FloatField
+from django.db.models import Count, Avg, DateField, Window, F, Q, FloatField, Max, Subquery, OuterRef
 from django.db.models.functions import RowNumber, Cast
-from . models import League, Match, PlayerStats
+from . models import League, Match, Player, PlayerStats
 
 # Create your views here.
 def main(request):
@@ -50,40 +51,69 @@ def match_results(request,slug):
 
 
 def player_rankings(request, slug):
-    total_matches = round(Match.objects.count()/4)
+    total_matches = Match.objects.count()
+    min_matches = round(total_matches/4)
+
+    current_streak = PlayerStats.objects.filter(player=OuterRef('player__id')).order_by('-pk')
+
     results = (PlayerStats.objects.filter(league__slug=slug)
             .values('player__name')
             .annotate(
                 wins=(Count('result', filter=Q(result='W'))),
                 losses=(Count('result', filter=Q(result='L'))),
-                total=(Count('result')), 
+                total=(Count('result')),
+                wl_streak= (Max('w_streak')),
+                ll_streak= (Max('l_streak')),
+                last_played=(Max('match')),
+                w_streak=Max(Subquery(current_streak.values('w_streak')[:1])),
+                l_streak=Max(Subquery(current_streak.values('l_streak')[:1])),
+         
             )
-            .filter(total__gt=total_matches)
+            .filter(total__gt=min_matches)
             .annotate(
                 win_pct = (
                         (Cast('wins', FloatField()) / (Cast('total', FloatField())) * 100)
-                    )
+                    ), 
             )
             .order_by('player__name')
             .order_by('-total')
             .order_by('-win_pct')
   
         )
-    print(total_matches)
-    return render(request, 'dash_components/player-rankings.html', {'results': results, 'total_matches': total_matches})
+
+    return render(request, 'dash_components/player-rankings.html', 
+        {
+            'results': results, 
+            'total_matches': total_matches,
+            'min_matches': min_matches,
+        })
 
 
-def winning_streaks(request, slug):
-    
-    return render(request, 'dash_components/player-rankings.html', {'results': results})
-
-def top_teams(request, slug):
-    results = (
-            Match.objects.filter(league__slug=slug)
+def most_games_played(request, slug):
+    games_played = Match.objects.filter(league__slug=slug).count()
+    results = (PlayerStats.objects.filter(league__slug=slug)
+            .values('player__name')
             .annotate(
-                wins=(Count('result', filter=Q(result='W'))),
+                total=(Count('result')),
+                pct=(Cast('total', FloatField()) / Cast(games_played, FloatField())*100)
             )
+            .order_by('player__name')
+            .order_by('-total')
         )
-    for r in results:
-        print(f'{r}')
-    return render(request, 'dash_components/player-rankings.html', {'results': results})
+
+    return render(request, 'dash_components/most-games-played.html', {'results': results})
+
+def rent_breakdown(request, slug):
+    results = (
+            PlayerStats.objects.filter(league__slug=slug)
+             
+            .annotate(
+                date=Cast('match__played_on', DateField()),
+                player_played=F('player__name')
+            )
+             
+        )
+    print(results.query)
+    #for r in results:
+        #print(f'{r}')
+    return render(request, 'dash_components/rent-breakdown.html', {'results': results})

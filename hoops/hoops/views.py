@@ -106,14 +106,13 @@ def most_games_played(request, slug):
 def rent_breakdown(request, slug):
     results = (
             PlayerStats.objects.filter(league__slug=slug)
-             
+            .values('match__played_on__date')
             .annotate(
-                date=Cast('match__played_on', DateField()),
-                player_played=F('player__name')
+                players = F('player__name'),
+                games_played = Count('match__played_on__date')
             )
-             
         )
     print(results.query)
-    #for r in results:
-        #print(f'{r}')
+    for r in results:
+        print(f'{r}')
     return render(request, 'dash_components/rent-breakdown.html', {'results': results})

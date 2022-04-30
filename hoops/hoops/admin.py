@@ -40,7 +40,7 @@ class MatchAdmin(admin.ModelAdmin):
 
 @admin.register(PlayerStats)
 class PlayerStatsAdmin(admin.ModelAdmin):
-    actions = ['reset_statistics']
+    
     list_display = [field.name for field in PlayerStats._meta.get_fields()]
     search_fields = ['player__name']
 

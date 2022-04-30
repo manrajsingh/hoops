@@ -52,7 +52,7 @@ def match_results(request,slug):
 
 def player_rankings(request, slug):
     total_matches = Match.objects.count()
-    min_matches = round(total_matches/4)
+    min_matches = round(total_matches/10)
 
     current_streak = PlayerStats.objects.filter(player=OuterRef('player__id')).order_by('-pk')
 
